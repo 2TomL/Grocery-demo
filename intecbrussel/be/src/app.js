@@ -1,0 +1,21 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const Template_js_1 = require("./classes/Template.js");
+const GroceryList_js_1 = require("./classes/GroceryList.js");
+const form = document.querySelector('.new-item');
+const itemInput = document.querySelector('#item');
+const quantityInput = document.querySelector('#quantity');
+const storeInput = document.querySelector('#store');
+const ul = document.querySelector('ul');
+const list = new Template_js_1.Template(ul);
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const item = itemInput.value;
+    const quantity = parseInt(quantityInput.value);
+    const store = storeInput.value;
+    const newItem = new GroceryList_js_1.GroceryList(item, quantity, store);
+    list.render(newItem, 'Grocery item', 'start');
+    itemInput.value = '';
+    quantityInput.value = '';
+    storeInput.value = '';
+});
